@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #242424;
+}
+.container{
+    display: flex;
+    justify-content: center;
+}
+.contain{
+    border: 2px solid grey;
+}
+.hr{
+    margin: 10px 0;
+    border: 1px solid grey;
+}
+.price_range{
+    color: grey;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+}
+.products{
+    width: 70%;
+    height: 400px;
+    
+}
+.range{
+    width: 200px;
+}
