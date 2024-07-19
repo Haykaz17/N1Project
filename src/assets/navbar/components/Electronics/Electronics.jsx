@@ -1,25 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Style from "./Store.module.scss";
-import { Menu, Input, Button } from "antd";
+import Style from "./Electronics.module.scss";
+import { Menu, Input } from "antd";
 import axios from "axios";
 import memo from "react";
-import { useNavigate } from "react-router-dom";
 
 const { Search } = Input;
 
-const categories = [
-  "All",
-  "Electronics", 
-  "Jewelery",
-  "Man",
-  "Woman",
-
-];
-
-const Store = () => {
+const Electronics = () => {
   const [filteredCategories, setFilteredCategories] = useState(categories);
   const [product, setProducts] = useState([]);
-const Navigate = useNavigate()
+
   const handleSearch = (value) => {
     const filtered = categories.filter((category) =>
       category.toLowerCase().includes(value.toLowerCase())
@@ -27,17 +17,9 @@ const Navigate = useNavigate()
     setFilteredCategories(filtered);
   };
 
-function HandleNavigate (){
-
-    Navigate("/Electronics");
- 
-}
-
-
-
   useEffect(() => {
     axios
-      .get("https://fakestoreapi.com/products")
+      .get("https://fakestoreapi.com/products/category/electronics")
       .then((res) => {
         setProducts(res.data);
         console.log(res.data);
@@ -50,12 +32,13 @@ function HandleNavigate (){
   return (
     <div className={Style.container}>
       <div style={{ width: 256 }}>
-        <div className={Style["Categotis-List"]}>
-          <Button onClick={HandleNavigate}>electronics</Button>
-          <Button>Jewelery</Button>
-          <Button>Man</Button>
-          <Button>WoMan</Button>
-        </div>
+        <Menu mode="inline" theme="dark">
+          {filteredCategories.map((category, index) => (
+            <Menu.Item className={Style.contain} key={index}>
+              {category}
+            </Menu.Item>
+          ))}
+        </Menu>
         <Search
           placeholder="Search categories"
           onSearch={handleSearch}
@@ -85,4 +68,4 @@ function HandleNavigate (){
   );
 };
 
-export default React.memo(Store);
+export default React.memo(Electronics);

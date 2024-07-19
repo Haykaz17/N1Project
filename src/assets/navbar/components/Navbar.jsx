@@ -25,6 +25,7 @@ const Navbar = () => {
         </div>
         <div className={Style.a3}></div>
       </div>
+      <Link to='/Electronics'></Link>
     </div>
   );
 };
